@@ -1,0 +1,3 @@
+module QOmdb
+plugin qomdbplugin
+classname QOmdbPlugin
