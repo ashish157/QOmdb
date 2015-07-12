@@ -29,20 +29,24 @@ view.setSource(QUrl(QStringLiteral("qrc:/example.qml")));
 
 #Examples
 ```
-QOmdb {
-        id: omdb
-        title: "Back to the Future"
-        plot: QOmdb.Short
+import QtQuick 2.5
+import QOmdb 1.0
 
-        onFinished: {
-            if(isJson) {
-                var data = JSON.parse(doc)
-                for (var key in data) {
-                    console.log("Key: ", key, "Value: ", data[key])
-                }
+QOmdb {
+    id: omdb
+    title: "Back to the Future"
+    plot: QOmdb.Short
+
+    onFinished: {
+        if(isJson) {
+            var data = JSON.parse(doc)
+            for (var key in data) {
+                console.log("Key:", key, "Value", data[key])
+                listview.model.append({"key": key, "info": data[key]})
             }
         }
     }
+}
 ```
 
 #License
